@@ -1,0 +1,17 @@
+<div id="send-component">
+
+  <hr /><br />
+  <img src="assets/reddy.jpg" width="100" height="100" />
+  <br />
+  <input #searchBox id="search-box" (keyup.enter)="sendMessage(searchBox.value)" />
+
+  <div *ngIf="watsonResponse != null">
+    <h4>Mensaje enviado: {{watsonResponse.message}}</h4>
+    <h4>Intents: {{watsonResponse.intents.length}}</h4>
+
+    <div *ngFor="let intent of watsonResponse.intents">
+      Intent: {{intent.intent}}
+      Confiabilidad: {{intent.confidence | percent}}
+    </div>
+  </div>
+</div>
